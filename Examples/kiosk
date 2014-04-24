@@ -1,0 +1,9 @@
+#!/bin/sh
+matchbox-window-manager &
+# running a full browser:
+kweb
+# to run in kiosk mode with full keyboard control:
+#kweb KAobhrp+-zgtjnediwxyqcf
+# a simple youtube player application:
+#kweb KAHZbhrp+-zjncf http://www.youtube.com
+

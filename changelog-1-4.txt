@@ -1,0 +1,68 @@
+Minimal Kiosk Browser (kweb) changelog 1.4
+
+1) New toggle button in the task bar:
+
+Use Omxplayer
+By default, this is enabled. If you disable it, kweb will try to play audio and video files and streams directly within the browser, using the gstreamer-library that libwebkit supports. Currently this will only work with some audio formats. Future webkit libraries, using gstreamer-1.0 with OpenMax support, may also play video with HW acceleration.
+
+2) New audio player GUI for playing audio files and playlists containing only audio files with omxplayer:
+
+"omxaudioplayer" has 6 buttons (play/pause, stop, rewind (about 10sec), forward (about 10 seconds), previous and next song), a volume slider, and a scrollable playlist window (for larger playlists).
+Keyboard controls:
+Space to play/pause, ESC or q to stop, r = rewind, f = forward, p = previous, n= next, + and - for volume control. Arrow keys and PageUp, PageDown are supported in the playlist window.
+
+3) New (optional) keyboard commands (usually with ALT+):
+
+q = stop any running omxplayer instance
+x = enable omxplayer for audio and video
+y = disable omxplayer for audio and video
+
+4) New or modified command line options
+
+F = Disable plugins and other exotic stuff (now enabled by default, CHANGED!)
+Y = Disable the use of omxplayer upon start (by default enabled)
+
+x,y,q for new keyboard controls (see above)
+
+5) New or modified options in kwebhelper(_settings).py
+
+The option "playaudioinbackground" is gone. It has been replaced by a few new options.
+"omxoptions" will now be used only for playing video files or streams.
+ omxplayer_in_terminal_for_audio = True
+if set to "False", audio can be played completely in background, without starting a terminal or a player GUI, depending on other settings (see below). To play audio on a web page automatically, include an (invisible) iframe, whose "src" points to an audio file or playlist.
+ 
+omxplayer_in_terminal_for_video = True
+if set to "False", video can be played completely in background, without starting a terminal first. You can then also use omxplayer's "-win" to simulate video playing inside the browser window. For full screen video you should use the "-b" option. Keyboard control of omxplayer is not possible then, but omxplayer can be stopped with ALT+q (if enabled on the command line). To automatically play video on a web page, include an (invisible) iframe, whose "src" points to a video file or playlist.
+ 
+try_stream_as_audio = False
+Normally stream links that don't have a file extension are handled as video by kweb. If you set this to "True", they will be handled as audio streams and use the audio settings. If the stream is a video stream will still be played as such, but using audio settings and maybe even the omxaudioplayer GUI. I added this option, because quite a number of m3u(8) files lists from web radio servers contain such streams. You should only set this to "True", if you want to play such audio streams inside a terminal or omxaudioplayer.
+ 
+videoextensions
+This is a list of video file type extensions. It's only used for counter checking, if you set "try_stream_as_audio" to "True"
+ 
+useAudioplayer = True
+If this is "True" (default), audio files and playlists containing only audio files will be played inside the new "omxaudioplayer" GUI. The setting "omxplayer_in_terminal_for_audio" will have no effect in this case. If this is set to "False", audio will be played inside a terminal or completely in background, if "omxplayer_in_terminal_for_audio"  is set to "False".
+One more thing: if "useVLC" is set to "True", all other audio options don't matter; VLC will be used to play audio (playlists) in this case.
+ 
+omxaudiooptions = []
+This list of omxplayer options (empty by default) will be used for all kinds of audio playback (except when using VLC). To use "pass through", for example, set it to ['-p'].
+ 
+defaultaudiovolume = 0
+volume setting when starting omxaudioplayer ranging from -20 to 4 ( -60 to +12 db)
+ 
+autoplay = True
+autofinish = True
+start playing and close after playing last song automatically (if "True", set to "False" to disable)
+fontname = 'SansSerif'
+Font to be used for playlist and interface
+fontheight = 12
+font size, value between 10 and 22, will also determine the size of the GUI window
+maxlines = 8
+number of entries displayed in playlist window of omxaudioplayer at the same time; value between 5 and 25
+lwidth = 40
+Minimal width of playlist entries in characters (usually much more are displayed); value between 40 and 80.
+ 
+youtube_omxoptions = []
+These is also a list of omxplayer options, to be used for all kinds of "web video", to be played when you click the "Play" buttons in the toolbar; this includes HTML5  video tags inside a web page and all websites using flash player, which are supported by youtube-dl. If you want to use the same options as with "normal" video (files or stream links) you can set it to:
+youtube_omxoptions = omxoptions
+

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Minimal Kiosk Browser
+Comment=Browse your own computer and the World Wide Web - small, but efficient
+GenericName=Web Browser
+Exec=kweb %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=minimalkioskbrowser.png
+Categories=Network;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;image/gif;image/jpeg;image/png
+StartupNotify=true
+Name[de_DE]=Minimal Kiosk Browser

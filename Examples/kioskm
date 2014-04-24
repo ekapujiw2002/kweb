@@ -1,0 +1,8 @@
+#!/bin/sh
+openbox --startup tint2 &
+# or using LXDE configuration:
+#openbox --config-file /openbox/LXDE-rc.xml --startup tint2 &
+#kweb
+# or with full keyboard support:
+kweb -obhrp+-zgtjnediwxyqcf
+

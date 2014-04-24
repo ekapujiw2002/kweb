@@ -1,0 +1,11 @@
+Install Instructions:
+
+sudo make install
+
+Remove:
+
+sudo make remove
+
+Compile (if modified):
+make
+

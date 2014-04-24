@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Minimal Kiosk Browser Homepage</title>
+</head><body style="font-size: 14pt;">
+<h3 style="text-align: center;">Welcome to Minimal Kiosk Browser (kweb)</h3>
+<table style="text-align: left; width: 100%;" border="0" cellpadding="8" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">This is the default homepage,
+that will be opened upon start and when
+you click the "Home" button in the toolbar. You should create your own
+homepage with your favourite links, often
+used functions etc., named "homepage.html", and put it in your user's
+root directory (replacing this one). If you do not know, how to create
+a HTML page, you can use a WYSIWYG
+HTML editor like Iceape Composer or the homepagecreator program
+supplied in the tools archive (check the manual for details).<br>
+      <br>
+If you don't want to use a local homepage file at all, you can start
+Minimal Kiosk Browser from the command line of a terminal like that:<br>
+      <br>
+      <span style="font-family: monospace;">kweb -H http://yourpreferredwebsite</span><br>
+      <br>
+or, if you want to have full keyboard support:<br>
+      <span style="font-family: monospace;">kweb -Hobhrp+-zgtjnediwxyqfc http://yourpreferredwebsite</span><br>
+      <br>
+You can also create a start script like that:<br>
+      <span style="font-family: monospace;"><br>
+#!/bin/bash<br>
+kweb -H http://yourpreferredwebsite</span><br>
+      <br>
+Save it as "startBrowser" (or any name you like) to your Desktop, make
+it executable and use it to start Minimal Kiosk Browser. Then the
+browser will always start with your preferred website and return to it,
+if you click the "Home" button in the toolbar.<br>
+      <br>
+For everything else read the $manual$.
+There are lots of options and
+possibilities to discover.</td>
+      <td style="vertical-align: top; width: 50%;"><b>A few examples of kweb's special features:</b><br>
+      <br>
+Web video: <a href="http://www.youtube.com/watch?v=o774LMtfeJY">Go
+here ...</a>, click the "Play" icon in the toolbar and wait a few
+seconds ...<br>
+      <br>
+Web radio: <a href="http://goldies-high.rautemusik.fm/listen.pls">Oldies</a><br>
+      <br>
+... <a href="file:///">or browse your file system</a><br>
+      <br>
+Simple command link examples: <a href="file:///homepage.html?cmd=lxterminal">Terminal</a>
+&nbsp;&nbsp;<a href="file:///homepage.html?cmd=top">Top</a>
+&nbsp;&nbsp;<a href="file:///homepage.html?cmd=sudo%20youtube-dl%20-U">Update youtube-dl</a>
+&nbsp;&nbsp;<a href="file:///homepage.html?cmd=sudo%20shutdown%20-h%20now">Shutdown</a><br><br>
+<a href="file:///homepage.html?cmd=sudo%20idle%20/usr/local/bin/kwebhelper_settings.py">Edit kwebhelper settings</a> (Be careful!)
+      <br><br>
+A simple command form example: Play video in small overlay window<br>
+      <br>
+      <form accept-charset="utf-8" enctype="application/x-www-form-urlencoded" method="get" action="file:///homepage.html" name="omxwindow"> <input name="cmd" value="formdata omxplayer --win" type="hidden">Aspect
+ratio:
+        <select name="dquoted">
+        <option value="10 150 441 473">4:3</option>
+        <option value="10 150 585 473">16:9</option>
+        </select>
+Video URL (file or stream) or file (full path):<br>
+        <input size="60" name="quoted"><br>
+        <input value="Play" type="submit"><br>
+      </form>
+      <form accept-charset="utf-8" enctype="application/x-www-form-urlencoded" method="get" action="file:///homepage.html" name="stop"> <input name="cmd" value="formdata killall omxplayer.bin" type="hidden"><input value="Stop playing" type="submit"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body></html>
